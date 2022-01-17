@@ -1,0 +1,44 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, div
+pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q,
+s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
+figure, header, nav, section, article, aside, footer, figcaption {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
+
+/* Intro Caption into the game*/
+#intro-window {
+    height: 900px;
+    width: 100%;
+    padding: 80px;
+}
+
+#intro-window .caption{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#intro-window .caption h1 {
+    font-weight: 900;
+    font-size: 3.5em;
+    animation-name: 1stText;
+    animation-duration: 2s;
+}
+
+
+/**/
+
+#game-window {
+    height: 900px;
+    width: 100%;
+    padding: 80px;
+}
+
+#game-window .blocks {
+    border: dotted 1px grey;
+}

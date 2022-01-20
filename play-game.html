@@ -7,18 +7,30 @@
     <title>Zha-Game</title>
     <!--Javascript Files-->
     <!--CSS Files-->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/animation.css">
 </head>
 <body>
+    <div class="background"></div>
+    <div class="title"><a href="#">Zha Game</a></div>
+    <!-- Intro Window -->
     <div id=intro-window>
-        <div class="caption">
-            <h1 id="intro-animate">Welcome To Zha</h1>
-            <span>A Classic Singaporean Children Game</span>
+        <div class="caption" id="intro-animate">     
+            <h1 class="inside-caption-landing">Welcome To Zha</h1>
+            <div class="inside-caption-landing2">A Classic Singaporean Children Game</div>  
         </div>
+        <!-- Username -->
+        <div class="username" id=username>
+            <div>Please enter a temporary username of your choice</div>
+            <input type="text" value="" maxlength="16" id=userinput><button>enter</button>
+        </div>
+    <!-- Rock Scissors Paper game window -->
+    <div id="rock-paper-scissors-window">
+        <div>HELLO</div>
     </div>
-    <!-- <div id="game-window">
+    <!-- Zha game window -->
+    <div id="game-window">
         <div class="row">
             <div class="col-lg-4 blocks">
                 <button><</button>
@@ -33,10 +45,28 @@
             </div>
 
         </div>
-    </div> -->
+    </div>
+    </div>
+    <div class="instructions" id=instructions>
+        <h3>Instructions for Zha: </h3>
+        <span>- In Zha we have 2 lives represented by our 2 hands. The game is played in a smiliar fashion to rock-paper-scissors in which we are using rock, human or gun as our moves instead.</span>
+        <br>
+        <span>- Rock beats Gun, Gun beats Human and Human beats Rock.</span>
+        <br>
+        <span>- During a player's turn, he is on the offensive side and will not lose any lives while the opposing player who is being attacked is vulnerable to losing lives.</span>
+        <br>
+        <span>- When a player loses a life, he loses one hand and can only play one move for subsequent turns.</span>
+        <br>
+        <span>- When a player loses both lives he loses the game.</span>
+        <br>
+        <span>- Whichever player starts first will be determined by a simple game of rock-paper-scissors and subsequent turns will alternate between players.</span>
+
+        
+    </div>
+    <script src="assets/js/jqueryCompressedSlim.js"></script>
     <script src="assets/js/Mechanics.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-    <script src="assets/js/animation.js"></script>
+    <!-- <script src="assets/js/bootstrap.bundle.min.js"></script> -->
+    <script src="assets/js/intro.js"></script>
+    
 </body>
 </html>

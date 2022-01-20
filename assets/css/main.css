@@ -7,38 +7,162 @@ figure, header, nav, section, article, aside, footer, figcaption {
   border: 0;
   outline: 0;
 }
-
-/* Intro Caption into the game*/
-#intro-window {
-    height: 900px;
-    width: 100%;
-    padding: 80px;
+body {
+    text-align: center;
+    font-family: papyrus;
 }
 
+.background {
+    background-color: rgb(198, 226, 198);
+    z-index: -1;
+    position:fixed;
+    padding:0;
+    margin:0;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    border-top: solid rgb(149, 170, 149);
+}
+
+/* title */
+.title {
+    font-weight: 900;
+    background-color: rgb(21, 116, 61);
+    border: solid gray 2px;
+    border-bottom: 0;
+    width: 960px;
+    font-size: 35px;
+    padding-top: 10px;
+    padding-bottom: 0;
+    margin:auto;
+    color: rgb(191, 248, 99);
+    margin-top: 5px;
+}
+
+.title a {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+/* Intro Caption into the game*/
+#intro-window {
+    background-color: white;
+    height: 450px;
+    width: 800px;
+    padding: 80px;
+    border: solid gray 2px;
+    display: flex;
+    margin: auto;
+    margin-top: 0;
+}
+/* @media (min-width: 1120px){
+    #intro-window {
+        margin: 100px 200px 10px 200px;
+        margin: auto;
+    }
+    
+} */
+
 #intro-window .caption{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: auto;
+    text-align: center;
 }
 
 #intro-window .caption h1 {
     font-weight: 900;
-    font-size: 3.5em;
+    font-size: 75px;
     animation-name: 1stText;
     animation-duration: 2s;
+    margin-bottom: 0px;
+}
+#intro-window .caption div {
+    margin-top: 0;
+    position: relative;
+    transform: translateY(-70%);
+}
+/* Username input */
+#intro-window .username {
+    margin: auto;
+    display: none;
+}
+
+#intro-window .username div{
+    font-weight: 800;
+    font-size: 20px;
+}
+
+#intro-window .username input[type=text]{
+    margin-right: 2px;
+    color:rgb(105, 109, 107);
+    font-weight: lighter;
+    font-size: 16px;
+    height: 20px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    border: 1px solid;
+    border-radius: 5px;
+    -webkit-transition: 0.1s;
+    transition: 0.1s;
+    outline: none;
+}
+
+#intro-window .username input[type=text]:focus{
+    border: 2px solid rgb(114, 141, 114);
+}   
+
+#intro-window .username button{
+    border-radius: 10%;
+    border-width: 1px;
+    height: 25px;
+    background-color: rgb(178, 206, 178);
+    cursor: pointer;
+    -webkit-transition: 0.1s;
+    transition: 0.1s;
+    outline: none;
+    font-family: papyrus;
+}
+
+#intro-window .username button:hover{
+    background-color: rgb(99, 158, 103);
 }
 
 
-/**/
+
+/* Rock Paper Scissors */
+#rock-paper-scissors-window {
+    height: 450px;
+    width: 800px;
+    padding: 80px;
+    border: solid gray;
+    display: none;
+    margin: auto;
+    margin-top: 10px;
+}
+
+
+/* Zha- game window */
 
 #game-window {
-    height: 900px;
-    width: 100%;
+    height: 450px;
+    width: 800px;
     padding: 80px;
+    border: solid gray;
+    display: none;
+    margin: auto;
+    margin-top: 10px;
 }
 
 #game-window .blocks {
     border: dotted 1px grey;
+}
+
+
+/* Instruction Menu */
+.instructions { 
+    margin: auto;
+    width: 990px;
+    text-align: left;
+    padding: 20px;
+    font-weight: bolder;
 }

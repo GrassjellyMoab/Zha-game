@@ -1,0 +1,143 @@
+.inside-caption-landing 
+{
+    font-family: papyrus;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    /* border-right: .10em solid black; */
+     /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 15px auto; /* Gives that scrolling effect as the typing happens */
+
+    animation: 
+        typing 2.5s steps(40, end),
+        blink-caret .75s step-end infinite;
+
+    background: none;
+}
+
+.inside-caption-landing2
+{
+    font-family: papyrus;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    /* border-right: .10em solid black; */
+     /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 15px auto; /* Gives that scrolling effect as the typing happens */
+    animation: 
+        typing 3.8s steps(40, end),
+        blink-caret .75s step-end infinite;
+
+    background: none;
+}
+
+/* The typing effect */
+/* typing speed too */
+@keyframes typing {
+    from { width: 0% }
+    to { width: 100% }
+}
+
+/* Fade Out Animation */
+.fade-out {
+    animation: fadeOut ease 3s;
+    -webkit-animation: fadeOut ease 3s;
+    -moz-animation: fadeOut ease 3s;
+    -o-animation: fadeOut ease 3s;
+    -ms-animation: fadeOut ease 3s;
+}
+@keyframes fadeOut {
+    0% {
+    opacity:1;
+    }
+    100% {
+    opacity:0;
+    }
+}
+
+@-moz-keyframes fadeOut {
+    0% {
+    opacity:1;
+    }
+    100% {
+    opacity:0;
+    }
+}
+
+@-webkit-keyframes fadeOut {
+    0% {
+    opacity:1;
+    }
+    100% {
+    opacity:0;
+    }
+}
+
+@-o-keyframes fadeOut {
+    0% {
+    opacity:1;
+    }
+    100% {
+    opacity:0;
+    }
+}
+
+@-ms-keyframes fadeOut {
+    0% {
+    opacity:1;
+    }
+    100% {
+    opacity:0;
+    }
+}
+  
+
+.fade-in {
+    animation: fadeIn ease 2s;
+    -webkit-animation: fadeIn ease 2s;
+    -moz-animation: fadeIn ease 2s;
+    -o-animation: fadeIn ease 2s;
+    -ms-animation: fadeIn ease 2s;
+}
+@keyframes fadeIn {
+    0% {
+    opacity:0;
+    }
+    100% {
+    opacity:1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    0% {
+    opacity:0;
+    }
+    100% {
+    opacity:1;
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+    opacity:0;
+    }
+    100% {
+    opacity:1;
+    }
+}
+
+@-o-keyframes fadeIn {
+    0% {
+    opacity:0;
+    }
+    100% {
+    opacity:1;
+    }
+}
+
+@-ms-keyframes fadeIn {
+    0% {
+    opacity:0;
+    }
+    100% {
+    opacity:1;
+    }
+}

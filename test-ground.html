@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,24 +13,23 @@
 <body>
     <div class="background"></div>
     <div class="title"><a href="#">Zha Game</a></div>
-    <!-- Intro Window -->
-    <div id=intro-window>
-        <div class="caption" id="intro-animate">     
-            <h1 class="inside-caption-landing">Welcome To Zha</h1>
-            <div class="inside-caption-landing2">A Classic Singaporean Children Game</div>  
-        </div>
-        <!-- Username -->
-        <div class="username" id=username>
-            <div>Please enter a temporary username of your choice</div>
-            <input type="text" value="" maxlength="16" id=userinput><button onclick="usernamecheck()">enter</button>
-            <div class="error" id=error>Username cannot contain more than 16 characters or any special characters</div>
-        </div>
+   
     <!-- Rock Scissors Paper game window -->
-    <div id="rock-paper-scissors-window">
-        <div>HELLO</div>
+    <div id="rock-paper-scissors-window" style="display: block;">
+        <div id="cpuRPS">
+            <button><</button>
+            <div></div>
+            <button>></button>
+        </div>
+        <div id="userRPS">
+            <button><</button>
+            <div></div>
+            <button>></button>
+        </div>
+        <button id=rpsResults>Fight?</button>
     </div>
     <!-- Zha game window -->
-    <div id="game-window">
+    <!-- <div id="game-window">
         <div class="row">
             <div class="col-lg-4 blocks">
                 <button><</button>
@@ -46,7 +44,7 @@
             </div>
 
         </div>
-    </div>
+    </div> -->
     </div>
     <div class="instructions" id=instructions>
         <h3>Instructions for Zha: </h3>

@@ -144,72 +144,76 @@ body {
     height: 614px;
     width: 964px;
     box-sizing: border-box;
-    padding: 25px;
     border: solid gray 2px;
     display: none;
     margin: auto;
     margin-top: 0;
 }
 
-#rock-paper-scissors-window #cpuRPS {
-    height: 50%;
+#rock-paper-scissors-window #RPSchoices {
+    height: 450px;
+    width: 750px;
+    /* background-color: rgb(149, 170, 149); */
+    position: relative;
+    margin: 80px 105px;
     display: flex;
-    justify-content: center;
 }
 
-#rock-paper-scissors-window #cpuRPS button { 
-    width: 40px;
-    height:40px;
-    position: relative;
-    top: 38%;
-    border-radius: 50%;
-    border: solid 1px;
-}
-
-#rock-paper-scissors-window #cpuRPS div {
-    background-color: rgb(191, 248, 99);
+#rock-paper-scissors-window #RPSchoices .RPSinnerchoices {
     width: 250px;
-    height: 250px;
-    margin: 0 10px 0 10px;
-    border-radius: 50%;
+    height: 450px;
+    /* outline: rosybrown dotted;
+    background-color: rgb(191, 248, 99); */
+    padding: 0px;
+    display: block;
 }
 
-#rock-paper-scissors-window #userRPS {
-    height: 50%;
-    display: flex;
-    justify-content: center;
-}
-
-#rock-paper-scissors-window #userRPS button { 
-    width: 40px;
-    height:40px;
+#rock-paper-scissors-window #RPSchoices .RPSinnerchoices .rpsFrame {
+    border: rgb(148, 189, 132) 2px solid;
+    width: 200px;
+    height: 200px;
     position: relative;
-    top: 45%;
-    border-radius: 50%;
-    border: solid 1px;
+    top: 105px;
+    margin-left: 22px;
+    
 }
 
-#rock-paper-scissors-window #userRPS div {
-    background-color: rgb(191, 248, 99);
-    width: 250px;
-    height: 250px;
-    margin: 0 10px 0 10px;
-    border-radius: 50%;
+#rock-paper-scissors-window #RPSchoices img {
+    width: 200px;
+    height: 200px;
+    
+}
+
+#rock-paper-scissors-window #RPSchoices .RPSmoveNames {
     position: relative;
-    transform: translateY(30px);
+    transform: translateY(-38px);
+    font-size: 20px;
+    font-weight: bolder;
+    cursor: pointer;
 }
 
-#rock-paper-scissors-window #rpsResults {
-    position: absolute;
-    height: 40px;
-    width: 70px;
-    bottom: 50%;
-    right: 50%;
-    transform: translate(50%, 105%);
+#rock-paper-scissors-window #cpuRPS{
+    height: 305px;
+    width: 305px;
+    border: solid 1px red;
+    border-right: 0;
+    position: relative;
+    float: right;
+    transform: translateY(50%);
+    display: none
+    
 }
 
-
-
+#rock-paper-scissors-window #userRPS{
+    height: 305px;
+    width: 305px;
+    border: solid 1px red;
+    border-left: 0;
+    position: relative;
+    float: left;
+    transform: translateY(50%);
+    display: none;
+}
 
 /* Zha- game window */
 

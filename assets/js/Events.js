@@ -68,17 +68,16 @@ function usernamecheck() {
     
     }
 }
-// document.documentElement.style.display = 'block';
-// // Jquery
-// $(function() {
-//     console.log('in');
-//     if(!$('#intro-animate').is(':visible'))
-//             {
-//                 console.log('in2');
-//                 $('#username').css({'display': 'block'});
-//             }
-    
-// });
+// Enter key to trigger button for input
+var input = document.getElementById('username');
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("UsernameBtn").click();
+  }
+});
+
+
 
 
 

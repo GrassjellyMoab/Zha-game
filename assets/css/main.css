@@ -138,7 +138,7 @@ body {
 
 
 
-/* Rock Paper Scissors */
+/* Rock Paper Scissors Game*/
 #rock-paper-scissors-window {
     background-color: white;
     height: 614px;
@@ -148,6 +148,13 @@ body {
     display: none;
     margin: auto;
     margin-top: 0;
+}
+
+#rock-paper-scissors-window h1 {
+    position: absolute;
+    top: 11%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #rock-paper-scissors-window #RPSchoices {
@@ -192,10 +199,59 @@ body {
     cursor: pointer;
 }
 
+#rock-paper-scissors-window .RPS-results {
+    display: none;
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%,-50%);
+    
+}
+
+#rock-paper-scissors-window .RPS-results span {
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#rock-paper-scissors-window #RPSdraw {
+    display: none;
+    position: absolute;
+    top: 56%;
+    left: 50%;
+    transform: translate(-50%,50%);
+    cursor: pointer;
+    
+}
+
+#rock-paper-scissors-window #RPSusername {
+    position: relative;
+    display: none;
+    font-size: 30px;
+    left: -31%;
+    transform: translateY(100px);
+    font-weight: bolder;
+}
+
+
+#rock-paper-scissors-window #RPScpuname {
+    position: relative;
+    display: none;
+    font-size: 30px;
+    right: -30%;
+    transform: translateY(100px);
+    font-weight: bolder;
+}
+
+
+
 #rock-paper-scissors-window #cpuRPS{
     height: 305px;
     width: 305px;
-    border: solid 1px red;
     border-right: 0;
     position: relative;
     float: right;
@@ -204,15 +260,26 @@ body {
     
 }
 
+#rock-paper-scissors-window #cpuRPS img{
+    width: 305px;
+    height: 305px;
+    position: relative;
+}
+
 #rock-paper-scissors-window #userRPS{
     height: 305px;
     width: 305px;
-    border: solid 1px red;
     border-left: 0;
     position: relative;
     float: left;
     transform: translateY(50%);
     display: none;
+}
+
+#rock-paper-scissors-window #userRPS img{
+    width: 305px;
+    height: 305px;
+    position: relative;
 }
 
 /* Zha- game window */

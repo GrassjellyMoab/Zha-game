@@ -29,7 +29,7 @@ body {
 .title {
     font-weight: 900;
     background-color: rgb(21, 116, 61);
-    border: solid gray 2px;
+    border: gray solid 2px;
     border-bottom: 0;
     width: 960px;
     font-size: 35px;
@@ -38,6 +38,8 @@ body {
     margin:auto;
     color: rgb(191, 248, 99);
     margin-top: 5px;
+    position: relative;
+    z-index: 2;
 }
 
 .title a {
@@ -272,26 +274,30 @@ body {
     position: relative;
 }
 
-/* ----------------------------------------------Zha- game window ----------------------------------------------*/
-
+/* ----------------------------------------------Zha-game window ----------------------------------------------*/
+/* -----------------------Zha-game-page1 -----------------------*/
 #game-window {
     background-color: white;
     height: 610px;
     width: 960px;
-    border: solid gray 2px;
+    border-left: solid gray 2px;
+    border-right: solid gray 2px;
     display: none;
     margin: auto;
     margin-top: 0;
+    flex-flow: row wrap;
 }
 
-#game-window .zha-split-half {
+#game-window .zha-split-half-vert {
     width: 480px;
     height: 610px;
     display: flex;
     justify-content: center;
+    position: relative;
+    bottom: 10%;
 }
 
-#game-window .zha-split-half .buttons {
+#game-window .zha-split-half-vert .buttons {
     position: relative;
     top: 40%;
     transform: translateY(20px);
@@ -305,7 +311,6 @@ body {
     background-color: rgba(43, 255, 128, 0.87);
 }
 
-/* CSS */
 .button-design {
   background-color: #c2fbd7;
   border-radius: 100px;
@@ -331,7 +336,7 @@ body {
   transform: scale(1.05) rotate(-1deg);
 }
    
-#game-window .zha-split-half img {
+#game-window .zha-split-half-vert img {
     width: 225px;
     height: 225px;
     position: relative;
@@ -347,11 +352,142 @@ body {
     display: none;
 }
 
-#game-window .zha-split-half .zha-split-half-caption {
+#game-window .zha-split-half-vert .zha-split-half-vert-caption {
     position: absolute;
-    top: 30%;
+    top: 25%;
     font-size: 30px;
 }
+
+#game-window .lock-in-button-container {
+    display: block;
+    position: absolute;
+    top: 500px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+}
+
+#game-window .lock-in-button-container .lock-in-button{
+    font-family: papyrus;
+    height: 50px;
+}
+
+/* -----------------------Zha-game-page2 -----------------------*/
+#game-window .zha-split-half-hori {
+    flex-wrap: wrap;
+    height: 305px;
+    width: 960px;
+    display: none;
+}
+
+#game-window .zha-split-half-hori .zha-items {
+    width: 250px;
+    height: 305px;
+}
+
+#game-window .zha-split-half-hori .zha-items img {
+    width: 250px;
+    height: 300px;
+}
+
+#game-window .zha-split-half-hori .zha-items .zha-shown-move, .zha-death {
+    display: none;
+}
+
+#game-window .zha-split-half-hori #CPU_left_hand_zha {
+    position: absolute;
+    left: 15%;
+    top: 2%;
+    z-index: 1;
+
+}
+
+#game-window .zha-split-half-hori #CPU_right_hand_zha {
+    position: absolute;
+    right: 15%;
+    top: 2%;
+    z-index: 1;
+}
+
+
+#game-window .zha-split-half-hori #User_left_hand_zha {
+    position: absolute;
+    left: 15%;
+    bottom: -15%;
+    z-index: 1;
+}
+
+#game-window .zha-split-half-hori #User_right_hand_zha {
+    position: absolute;
+    right: 15%;
+    bottom: -15%;
+    z-index: 1;
+}
+
+/*- Dead hand container -*/
+
+#game-window .zha-split-half-hori #CPU_left_hand_dead {
+    position: absolute;
+    left: 15%;
+    top: 2%;
+    z-index: 1;
+    display: none;
+}
+
+#game-window .zha-split-half-hori #CPU_right_hand_dead {
+    position: absolute;
+    right: 15%;
+    top: 2%;
+    z-index: 1;
+}
+
+#game-window .zha-split-half-hori #User_left_hand_dead {
+    position: absolute;
+    left: 15%;
+    bottom: -15%;
+    z-index: 1;
+}
+
+#game-window .zha-split-half-hori #User_right_hand_dead {
+    position: absolute;
+    right: 15%;
+    bottom: -15%;
+    z-index: 1;
+}
+
+/*-----------------------*/
+#game-window #zha-turn-end-continue {
+    position: absolute;
+    width: 960px;
+    height:610px;
+    display: none;
+    user-select: none;
+    font-size: 30px;
+    padding-top: 293px;
+    color: rgb(56, 150, 56);
+    font-weight: bolder;
+}
+
+#game-window #zha-left-half {
+    width: 480px;
+    height: 610px;
+    display: none;
+    position: absolute;
+   
+}
+
+#game-window #zha-right-half {
+    width: 480px;
+    height: 610px;
+    display: none;
+    position: absolute;
+    left: 50%;
+    
+    
+    
+}
+
+
 /* ----------------------------------------------Instruction Menu---------------------------------------------- */
 .instructions { 
     margin: auto;
@@ -359,4 +495,17 @@ body {
     text-align: left;
     padding: 20px;
     font-weight: bolder;
+    position: relative;
+    z-index: 2;
+    background-color: rgb(198, 226, 198);
+}
+
+.border-top-instructions {
+    position: absolute;
+    background-color: gray;
+    height: 2px;
+    width: 964px;
+    z-index: 3;
+    left: 50%;
+    transform: translateX(-50%);
 }

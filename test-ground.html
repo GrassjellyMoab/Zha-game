@@ -16,37 +16,89 @@
 
     <!-- Zha game window -->
     <div id="game-window" style="display: flex;">
-        <!--Zha-CSS-slideshow-->
-        <div class="zha-split-half">
+        <!-------------------------------------Zha-page1-------------------------------------->
+        <div id="zha-left-half"></div>
+        <div class="zha-split-half-vert">
             <button role="button" class="buttons button-design" id="left-left-button" onclick="plusSlidesLeft(-1)"><</button>
             <div class="myslides1 FadeZhaChoices">
-                <img src="assets/imgs/TestImg.png" id="left-hand-img">
+                <img src="assets/imgs/TestImg.png">
             </div>
             <div class="myslides1 FadeZhaChoices ">
-                <img src="assets/imgs/TestImg2.png" id="left-hand-img">
+                <img src="assets/imgs/TestImg2.png">
             </div>
             <div class="myslides1 FadeZhaChoices ">
-                <img src="assets/imgs/TestImg3.png" id="left-hand-img">
+                <img src="assets/imgs/TestImg3.png">
             </div>
             <button role="button" class="buttons button-design" id="left-right-button" onclick="plusSlidesLeft(1)">></button>
-            <div class="zha-split-half-caption">Left Hand</div>
+            <div class="zha-split-half-vert-caption">Left Hand</div>
         </div>
-        <div class="zha-split-half">
-            <button role="button" class="buttons button-design" id="right-left-button" onclick="plusSlidesRight(1)"><</button>
+        <div id="zha-right-half"></div>
+        <div class="zha-split-half-vert">
+            <button role="button" class="buttons button-design" id="right-left-button" onclick="plusSlidesRight(-1)"><</button>
             <div class="myslides2 FadeZhaChoices">
-                <img src="assets/imgs/TestImg.png" id="left-hand-img">
+                <img src="assets/imgs/TestImg.png">
             </div>
             <div class="myslides2 FadeZhaChoices ">
-                <img src="assets/imgs/TestImg2.png" id="left-hand-img">
+                <img src="assets/imgs/TestImg2.png">
             </div>
             <div class="myslides2 FadeZhaChoices ">
-                <img src="assets/imgs/TestImg3.png" id="left-hand-img">
+                <img src="assets/imgs/TestImg3.png">
             </div>
             <button role="button" class="buttons button-design" id="right-right-button" onclick="plusSlidesRight(1)">></button>
-            <div class="zha-split-half-caption">Right Hand</div>
+            <div class="zha-split-half-vert-caption">Right Hand</div>
         </div>
+        <div class="lock-in-button-container">
+            <button role="button" class="button-design lock-in-button" onclick="zha_results();">Confirm Selection</button>
+        </div>
+        <!-------------------------------------Zha-page2-------------------------------------->
+        <div class="zha-split-half-hori">
+            <h1>CPU</h1>
+            <div class="zha-items" id="CPU_left_hand_zha" style="transform: scaleY(-1);">
+                <img src="assets/imgs/temp-zha/hand-test.jpeg" class="zha-before-move">
+                <img src="assets/imgs/temp-zha/temp-Human.jpg" class="zha-shown-move" id="zCPUL1">
+                <img src="assets/imgs/temp-zha/temp-Gun.jpg" class="zha-shown-move" id="zCPUL2">
+                <img src="assets/imgs/temp-zha/temp-Rock.jpg" class="zha-shown-move" id="zCPUL3">
+            </div>
+            <div class="zha-items" id="CPU_left_hand_dead" style="transform: scaleY(-1);">
+                <img src="assets/imgs/temp-zha/temp-dead.jpg" class="zha-death" id="zCPUL4">
+            </div>
+            <div class="zha-items" id="CPU_right_hand_zha" style="transform: scale(-1,-1);">
+                <img src="assets/imgs/temp-zha/hand-test.jpeg" class="zha-before-move">
+                <img src="assets/imgs/temp-zha/temp-Human.jpg" class="zha-shown-move" id="zCPUR1">
+                <img src="assets/imgs/temp-zha/temp-Gun.jpg" class="zha-shown-move" id="zCPUR2">
+                <img src="assets/imgs/temp-zha/temp-Rock.jpg" class="zha-shown-move" id="zCPUR3">
+                <img src="assets/imgs/temp-zha/temp-dead.jpg" class="zha-death" id="zCPUR4">
+            </div>
+            <div class="zha-items" id="CPU_right_hand_dead" style="transform: scale(-1,-1);">
+                <img src="assets/imgs/temp-zha/temp-dead.jpg" class="zha-death" id="zCPUR4">
+            </div>
+        </div>
+        <div class="zha-split-half-hori">
+            <h1 style="position: relative; transform: translateY(256px);">USER</h1>
+            <div class="zha-items" id="User_left_hand_zha">
+                <img src="assets/imgs/temp-zha/hand-test.jpeg" class="zha-before-move">
+                <img src="assets/imgs/temp-zha/temp-Human.jpg" class="zha-shown-move" id="zUSERL1">
+                <img src="assets/imgs/temp-zha/temp-Gun.jpg" class="zha-shown-move" id="zUSERL2">
+                <img src="assets/imgs/temp-zha/temp-Rock.jpg" class="zha-shown-move" id="zUSERL3">
+            </div>
+            <div class="zha-items" id="User_left_hand_dead">
+                <img src="assets/imgs/temp-zha/temp-dead.jpg" class="zha-death" id="zUSERL4">
+            </div>
+            <div class="zha-items" id="User_right_hand_zha" style="transform: scaleX(-1);">
+                <img src="assets/imgs/temp-zha/hand-test.jpeg" class="zha-before-move">
+                <img src="assets/imgs/temp-zha/temp-Human.jpg" class="zha-shown-move" id="zUSERR1">
+                <img src="assets/imgs/temp-zha/temp-Gun.jpg" class="zha-shown-move" id="zUSERR2">
+                <img src="assets/imgs/temp-zha/temp-Rock.jpg" class="zha-shown-move" id="zUSERR3">
+            </div>
+            <div class="zha-items" id="User_right_hand_dead">
+                <img src="assets/imgs/temp-zha/temp-dead.jpg" class="zha-death" id="zUSERR4">
+            </div>
+            
+        </div>
+        <div id="zha-turn-end-continue" onclick="continue_zha();">Click on screen<br>to continue</div>
     </div>
-    </div>
+    <!-- Instructions -->
+    <div class="border-top-instructions"></div>
     <div class="instructions" id=instructions>
         <h3>Instructions for Zha: </h3>
         <span>- In Zha we have 2 lives represented by our 2 hands. The game is played in a smiliar fashion to rock-paper-scissors in which we are using rock, human or gun as our moves instead.</span>
@@ -60,8 +112,7 @@
         <span>- When a player loses both lives he loses the game.</span>
         <br>
         <span>- Whichever player starts first will be determined by a simple game of rock-paper-scissors and subsequent turns will alternate between players.</span>
-
-        
+         
     </div>
     <script src="assets/js/jqueryCompressedSlim.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>

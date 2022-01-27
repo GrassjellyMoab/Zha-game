@@ -91,6 +91,7 @@ var opp_options = {"Rock": "Opp_Rock", "Scissors": "Opp_Scissors", "Paper": "Opp
 var user_options = {"Rock": "User_Rock", "Scissors": "User_Scissors", "Paper": "User_Paper"};
 var gifUser = "/Users/yanyixue/Desktop/HTML, CSS, JS/Zha-game/assets/imgs/RpsUSERgif.gif";
 var gifCPU = "/Users/yanyixue/Desktop/HTML, CSS, JS/Zha-game/assets/imgs/RpsCPUgif.gif";
+var turn;
 
 // gif animate again when game resets
 function resetGif(id) {
@@ -135,10 +136,12 @@ function RPSchoice(RpsChoice) {
         console.log(RpsChoice);
         if (opp_move == move_dict[RpsChoice]) {
             document.getElementById('RPS-results2').innerHTML = 'User Wins!';
+            turn = true;
         }
         // User Loses
         else if (RpsChoice == move_dict[opp_move]) {
             document.getElementById('RPS-results2').innerHTML = 'CPU Wins!';
+            turn = false;
         }
 
         if (RpsChoice == opp_move) {

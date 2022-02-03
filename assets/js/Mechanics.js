@@ -63,8 +63,15 @@ var USER_hands = {
   RightMove: null,
   RightStatus: true
 };
+
+// if (USER_hands.LeftStatus == true) {
+//   document.getElementById('zha-left-half').style.display = 'none';
+// }
+// if (USER_hands.RightStatus == true) {
+//   document.getElementById('zha-right-half').style.display = 'none';
+// }
 /*-----------------------------Zha-2nd-Part-----------------------------*/
-var turn = true;
+var turn = false;
 // link img ids to moves
 var UserZhaLeftIDs = {"Human": "zUSERL1", "Gun": "zUSERL2", "Rock": "zUSERL3", "Dead": "zUSERL4"};
 var UserZhaRightIDs = {"Human": "zUSERR1", "Gun": "zUSERR2", "Rock": "zUSERR3", "Dead": "zUSERR4"};
@@ -81,7 +88,7 @@ function zha_results() {
   });
   // Show 2nd part with hands
   Array.from(document.getElementsByClassName('zha-split-half-hori')).forEach((el) => {
-    el.style.display = 'block';
+    el.style.display = 'flex';
   });
   Array.from(document.getElementsByClassName('zha-before-move')).forEach((el) => {
     el.style.display = 'block';
@@ -89,6 +96,9 @@ function zha_results() {
   Array.from(document.getElementsByClassName('zha-shown-move')).forEach((el) => {
     el.style.display = 'none';
   });
+  document.getElementById('zha-left-half').style.display = 'none';
+  document.getElementById('zha-right-half').style.display = 'none';
+  
   // document.getElementById('zha-turn-end-continue').style.display = "block";
 
   // get CPU moves
@@ -200,7 +210,7 @@ function zha_results() {
       // attacker left hand attacks defender left if not right
       if (zha_moves_dict[attacker[0]] == defender[0]) {
         USER_hands.LeftStatus = false;
-        USER_hands.RightMove = null;
+        USER_hands.LeftMove = null;
         defender[0] = null;
       }
       else if (zha_moves_dict[attacker[0]] == defender[1]) {
@@ -230,7 +240,6 @@ function zha_results() {
     }
     if (CPU_hands.RightStatus == false) {
       document.getElementById('CPU_right_hand_zha').style.display = 'none';
-      console.log("inside right dead");
       document.getElementById('CPU_right_hand_dead').style.display = 'block';
       document.getElementById(CpuZhaRightIDs["Dead"]).style.display = 'block';
     }
@@ -240,7 +249,7 @@ function zha_results() {
       document.getElementById(UserZhaLeftIDs["Dead"]).style.display = 'block';
     }
     if (USER_hands.RightStatus == false){
-      document.getElementById('User_left_hand_zha').style.display = 'none';
+      document.getElementById('User_right_hand_zha').style.display = 'none';
       document.getElementById('User_right_hand_dead').style.display = 'block';
       document.getElementById(UserZhaRightIDs["Dead"]).style.display = 'block';
     }
@@ -253,7 +262,16 @@ function zha_results() {
       document.getElementById('zha-turn-end-continue').style.display = 'block';
     } 
     else {
-      console.log('fook');
+      // outcome determined
+      let block = document.getElementById('end-results');
+      block.style.display = 'block';
+      if (USER_hands.RightStatus == false && USER_hands.LeftStatus == false) {
+        block.innerHTML = "Your Have Lost, Try Again Next Time."
+      }
+      if (CPU_hands.LeftStatus == false && CPU_hands.RightStatus == false) {
+        block.innerHTML = "Congratulations, You Have Won!"
+      }
+
     }
     // Victory
 
@@ -266,7 +284,9 @@ function zha_results() {
     }
   }, 7000)
 }
-
+// check whether dead hand in zha page 1 has already been appeneded so we dont append twice
+// USER LEFT, USER RIGHT
+var page1_death_hands = [0, 0];
 function continue_zha() {
   document.getElementById('zha-turn-end-continue').style.display = 'none';
   Array.from(document.getElementsByClassName('zha-split-half-vert')).forEach((el) => {
@@ -279,20 +299,34 @@ function continue_zha() {
   Array.from(document.getElementsByClassName('zha-split-half-hori')).forEach((el) => {
     el.style.display = 'none';
   });
+  // display block for dead hands on 1st page
+  document.getElementById('zha-left-half').style.display = 'block';
+  document.getElementById('zha-right-half').style.display = 'block';
+  // Get arr of 'zha-split-half-vert' to display none when hand is dead
+  let vert_arr = document.getElementsByClassName('zha-split-half-vert');
   // check if right or left hand is dead
-  if (USER_hands.LeftStatus == false) {
+  if (USER_hands.LeftStatus == false && page1_death_hands[0] == 0) {
+    // create dead hand image
     let img = document.createElement('img');
     img.src = "assets/css/css_images/temp-dead-hand-left.jpg";
     let block = document.getElementById("zha-left-half");
     block.style.display = 'block';
     block.appendChild(img);
+    // make split half vert display none
+    vert_arr[0].style.visibility = 'hidden';
+    // add to the counter so that we know whether 'if block' has been ran before
+    page1_death_hands[0] += 1;
   }
-  if (USER_hands.RightStatus == false) {
+  if (USER_hands.RightStatus == false && page1_death_hands[1] == 0) {
     let img = document.createElement('img');
     img.src = "assets/css/css_images/temp-dead-hand-right.jpg";
     let block = document.getElementById("zha-right-half");
     block.style.display = 'block';
     block.appendChild(img);
+    // make split half vert display none
+    vert_arr[1].style.visibility = 'hidden';
+    // add to the counter so that we know whether 'if block' has been ran 
+    page1_death_hands[1] += 1;
   }
   slideIndexLeft = 1;
   slideIndexRight = 1;

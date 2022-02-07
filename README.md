@@ -5,5 +5,6 @@ A classic singaporean childhood game
 
 //
 - Python Terminal Version is completed
-- Webgame version completed up to rock paper scissors game as of 26/01/2002 2300
+- Webgame version completed up to rock paper scissors game as of 26/01/2022 2300
+- Webgame version of Zha completed as of 7/2/2022 (less for visuals)
 //

@@ -13,12 +13,11 @@
 <body>
     <div class="background"></div>
     <div class="title"><a href="#">Zha Game</a></div>
-
     <!-- Zha game window -->
     <div id="game-window" style="display: flex;">
         <!-------------------------------------Zha-page1-------------------------------------->
         <div id="zha-left-half"></div>
-        <div class="zha-split-half-vert">
+        <div class="zha-split-half-vert zha-fadein">
             <button role="button" class="buttons button-design" id="left-left-button" onclick="plusSlidesLeft(-1)"><</button>
             <div class="myslides1 FadeZhaChoices">
                 <img src="assets/imgs/TestImg.png">
@@ -33,7 +32,7 @@
             <div class="zha-split-half-vert-caption">Left Hand</div>
         </div>
         <div id="zha-right-half"></div>
-        <div class="zha-split-half-vert">
+        <div class="zha-split-half-vert zha-fadein">
             <button role="button" class="buttons button-design" id="right-left-button" onclick="plusSlidesRight(-1)"><</button>
             <div class="myslides2 FadeZhaChoices">
                 <img src="assets/imgs/TestImg.png">
@@ -47,7 +46,7 @@
             <button role="button" class="buttons button-design" id="right-right-button" onclick="plusSlidesRight(1)">></button>
             <div class="zha-split-half-vert-caption">Right Hand</div>
         </div>
-        <div class="lock-in-button-container">
+        <div class="lock-in-button-container zha-fadein">
             <button role="button" class="button-design lock-in-button" onclick="zha_results();">Confirm Selection</button>
         </div>
         <!-------------------------------------Zha-page2-------------------------------------->
@@ -91,8 +90,8 @@
             <div class="zha-items" id="User_right_hand_dead">
                 <img src="assets/imgs/temp-zha/temp-dead.jpg" class="zha-death" id="zUSERR4">
             </div>
-            <h1 style="position: relative; bottom: 40px;">USER</h1>
-            
+            <!-- User Lives left and username -->
+            <h1 id="Zha-Username" style="position: relative; bottom: 40px;">USER</h1>
         </div>
         <div id="zha-turn-end-continue" onclick="continue_zha();">Click on screen<br>to continue</div>
         <!-- <div id="stats">
@@ -101,6 +100,20 @@
             <span id="lives counter">User's Lives Left: </span><span>CPU's Lives Left: </span>
         </div> -->
         <div id="end-results"></div>
+        <div id="zha-togglebox">
+            <div id="zha-toggle-bar" onclick="ZhaToggleSideBar();">
+                <div class="vertical-lines" style="left: 25%; top: 50%; transform: translateY(-50%);"></div>
+                <div class="vertical-lines" style="left: 50%; top: 50%; transform: translateY(-50%);"></div>
+                <div class="vertical-lines" style="left: 75%; top: 50%; transform: translateY(-50%);"></div>
+            </div>
+            <div id="zha-info-stats">
+                <span id="Turn-stats">Turn: </span>
+                <br>
+                <span id="User-lives-stats">User Lives Left: 2</span>
+                <br>
+                <span id="CPU-lives-stats">CPU Lives Left: 2</span>
+            </div>
+        </div>
     </div>
     <!-- Instructions -->
     <div class="border-top-instructions"></div>
@@ -122,7 +135,7 @@
     <script src="assets/js/jqueryCompressedSlim.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/Events.js"></script>
-    <script src="assets/js/Mechanics.js"></script>
+    <!-- <script src="assets/js/Mechanics.js"></script> -->
 
     
 </body>

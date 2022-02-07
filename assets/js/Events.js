@@ -1,42 +1,27 @@
 // ------------------------------------------------INTRO------------------------------------------------------
-
-// First intro text appear and disappear
-function disappear() {
-    let obj = document.getElementById('intro-animate');
-    obj.style.display= 'none';
-}   
-
-function fadeout() {
-    let obj = document.getElementById('intro-animate');
-    obj.classList.add('fade-out');
-}
-
-// let text below appear later
+// Let 2nd intro text onwards appear
 window.onload = setTimeout(function() {
     let obj = document.getElementById('Second');
     obj.style.visibility = 'visible'
+    setTimeout(()=>{
+      // let play-now button appear after other text appears
+      document.getElementById('play-now-button').style.visibility='visible';
+      document.getElementById('play-now-button').classList.add('fade-in-faster');
+    },1500)
 }, 2500)
 
-// let text ease out
-window.onload = setTimeout(fadeout, 5000);
-window.onload = setTimeout(disappear, 8000);
-
-
-// once the intro text disappear username appears
-function appear() {
-    let obj = document.getElementById('username');
-    obj.style.display = 'block';
+function IntroToUsername() {
+  // let intro page fade out
+  let obj = document.getElementById('intro-animate');
+  let obj2 = document.getElementById('username');
+  obj.classList.add('fade-out');
+  obj2.classList.add('fade-in');
+  setTimeout(()=>{
+    obj.style.display= 'none';
+    obj2.style.display = 'block';
+}, 3000)
 }
-
-function fadein() {
-    let obj = document.getElementById('username');
-    obj.classList.add('fade-in')
-}
-
-// Username event begins
-window.onload = setTimeout(fadein,8500)
-window.onload = setTimeout(appear,8500)
-
+// User name Section
 function usernamecheck() {
     var username = document.getElementById('userinput').value;
     localStorage.setItem("Username", username);
@@ -56,16 +41,12 @@ function usernamecheck() {
             document.getElementById('username').style.display = 'none';
         }, 1000);
 
-        let obj2 = document.getElementById('rock-paper-scissors-window');
+        let obj2 = document.getElementById('RPSchoices');
         obj2.classList.add('fade-in-faster');
         setTimeout(() => {
             document.getElementById('rock-paper-scissors-window').style.display = 'block';
-        }, 1000);
-       setTimeout(() => {
             document.getElementById('intro-window').style.display = 'none';
-       }, 1001);
-        
-    
+        }, 1000);
     }
 }
 // Enter key to trigger button for input
@@ -168,8 +149,72 @@ function drawgame() {
     document.getElementById('RPSgifCPU').style.display = 'block';
 };
 
+// if game ends, continue to Zha Game
+function ContinueToZha() {
+  let RPS_Window = document.getElementById('rock-paper-scissors-window');
+  let RPS_innerObjects = document.getElementsByClassName('RPSfadeout');
+  for (let i = 0; i < RPS_innerObjects.length; i++) {
+    RPS_innerObjects[i].classList.add('fade-out');
+  }
+  
+  setTimeout(()=>{
+    RPS_Window.style.display = 'none';
+  }, 3000)
+  setTimeout(()=>{
+    document.getElementById('game-window').style.display = 'flex';
+    let ZhaFadeInAtStart = document.getElementsByClassName('zha-fadein');
+    for (let i = 0; i < ZhaFadeInAtStart.length; i++) {
+      ZhaFadeInAtStart[i].classList.add('fade-in');
+    } 
+  }, 3000)
+  // display whose turn
+  if (turn == true) {
+    document.getElementById('Turn-stats').innerHTML = 'Turn: User';
+  }
+  else if (turn == false) {
+    document.getElementById('Turn-stats').innerHTML = 'Turn: CPU';
+  }
+}
 
-/* Zha Game */
+/* -----------------------------Zha Game----------------------------- */
+// var to check whether we on page 1 or 2
+var zha_page_num = 1;
+// Zha toggle-side-bar for info
+var sidebarcount = 1;
+function ZhaToggleSideBar() {
+  let obj = document.getElementById('zha-togglebox');
+  if (zha_page_num == 1) {
+    // if sidebar not yet opened
+    if (sidebarcount % 2 != 0) {  
+      document.getElementById('zha-info-stats').style.display = 'block';
+      obj.style.transform = 'translate(134%,-210%)';
+      sidebarcount += 1;
+    }
+    // if sidebar opened
+    else if (sidebarcount % 2 == 0) {
+      document.getElementById('zha-info-stats').style.display = 'none';
+      obj.style.transform = 'translate(222%, -210%)';
+      sidebarcount += 1;
+    }
+  }
+
+  else if(zha_page_num == 2) {
+    // if sidebar not yet opened
+    if (sidebarcount % 2 != 0) {  
+      document.getElementById('zha-info-stats').style.display = 'block';
+      obj.style.transform = 'translate(183%,-210%)';
+      sidebarcount += 1;
+    }
+    // if sidebar opened
+    else if (sidebarcount % 2 == 0) {
+      document.getElementById('zha-info-stats').style.display = 'none';
+      obj.style.transform = 'translate(271%, -210%)';
+      sidebarcount += 1;
+    }
+  }
+}
+
+//-----------------------------------------------------------------------
 
 var zha_moves = ["Human", "Gun", "Rock"];
 var zha_moves_dict = {"Human": "Rock", "Rock": "Gun", "Gun": "Human", null: "none"};
@@ -244,6 +289,14 @@ var UserZhaRightIDs = {"Human": "zUSERR1", "Gun": "zUSERR2", "Rock": "zUSERR3", 
 var CpuZhaLeftIDs = {"Human": "zCPUL1", "Gun": "zCPUL2", "Rock": "zCPUL3", "Dead": "zCPUL4"};
 var CpuZhaRightIDs = {"Human": "zCPUR1", "Gun": "zCPUR2", "Rock": "zCPUR3", "Dead": "zCPUR4"};
 function zha_results() {
+  // for side toggle abr
+  zha_page_num = 2;
+  if (sidebarcount % 2 != 0){
+    document.getElementById('zha-togglebox').style.transform = 'translate(271%,-210%)';
+  }
+  else if (sidebarcount % 2 == 0) {
+    document.getElementById('zha-togglebox').style.transform = 'translate(183%, -210%)';
+  }
   console.log("turn:" + turn);
   // Display None Choice Part
   Array.from(document.getElementsByClassName('zha-split-half-vert')).forEach((el) => {
@@ -428,22 +481,32 @@ function zha_results() {
     // Continue
     if ((USER_hands.RightStatus == true || USER_hands.LeftStatus == true) && (CPU_hands.LeftStatus == true || CPU_hands.RightStatus == true)) {
       document.getElementById('zha-turn-end-continue').style.display = 'block';
+      // change user lives display if they lost lives
+      if (USER_hands.RightStatus == false || USER_hands.LeftStatus == false) {
+        document.getElementById('User-lives-stats').innerHTML = 'User Lives Left: 1';
+      }
+      if (CPU_hands.LeftStatus == false || CPU_hands.RightStatus == false) {
+        document.getElementById('CPU-lives-stats').innerHTML = 'CPU Lives Left: 1';
+      }
     } 
     else {
       // outcome determined
       let block = document.getElementById('end-results');
       block.style.display = 'block';
+      // defeat
       if (USER_hands.RightStatus == false && USER_hands.LeftStatus == false) {
         block.innerHTML = "Your Have Lost, Try Again Next Time."
+        document.getElementById('User-lives-stats').innerHTML = 'User Lives Left: 0';
+
       }
+      // victory
       if (CPU_hands.LeftStatus == false && CPU_hands.RightStatus == false) {
         block.innerHTML = "Congratulations, You Have Won!"
+        document.getElementById('CPU-lives-stats').innerHTML = 'CPU Lives Left: 0';
       }
 
     }
-    // Victory
-
-    // Defeat
+  
     if (turn) {
       turn = false;
     }
@@ -456,6 +519,21 @@ function zha_results() {
 // USER LEFT, USER RIGHT
 var page1_death_hands = [0, 0];
 function continue_zha() {
+  // display whose turn
+  if (turn == true) {
+    document.getElementById('Turn-stats').innerHTML = 'Turn: User';
+  }
+  else if (turn == false) {
+    document.getElementById('Turn-stats').innerHTML = 'Turn: CPU';
+  }
+  //
+  zha_page_num = 1;
+  if (sidebarcount % 2 != 0) {
+    document.getElementById('zha-togglebox').style.transform = 'translate(222%, -210%)';
+  }
+  else if (sidebarcount % 2 == 0) {
+    document.getElementById('zha-togglebox').style.transform = 'translate(134%, -210%)';
+  }
   document.getElementById('zha-turn-end-continue').style.display = 'none';
   Array.from(document.getElementsByClassName('zha-split-half-vert')).forEach((el) => {
     el.style.display = 'flex';

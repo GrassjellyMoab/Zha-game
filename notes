@@ -1,14 +1,12 @@
 -------------BUGS TO FIX-----------------
-- 
+- sometimes after playing RPS screen show visual glitchy looking thing
 - 
 
 -----------------TO ADD------------------
-- Lives counter and turn checker
-- Play button !!!
 - Play Again option
 - Possibly Best of 3?
-- Better images and animations with arrows to show who is attacking who
-- add click on screen to continue to zha Function !!!
-- adjust position of click on screen to continue
+- Better images and animations with arrows to show who is attacking who !!!
 
+------------LEARNING POINTS--------------
+- Use class to represent each page so that can display none everything immediately
 

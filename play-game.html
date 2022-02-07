@@ -19,6 +19,7 @@
         <div class="caption" id="intro-animate">     
             <h1 class="inside-caption-landing">Welcome To Zha</h1>
             <div class="inside-caption-landing2" id=Second>A Classic Singaporean Children Game</div>  
+            <button role="button" onclick="IntroToUsername();" id="play-now-button">Play Now</button>
         </div>
         <!-- Username -->
         <div class="username" id="username">
@@ -55,35 +56,35 @@
             </div>
         </div>
         <!--RPS results box-->
-        <div class="RPS-results" id="RPS-results">
+        <div class="RPS-results RPSfadeout" id="RPS-results">
             <span id="RPS-results2"></span>
         </div>
         <div id="RPSdraw" onclick = "drawgame();">Click here to try again</div>
 
         <!-- Rock Paper Scissors Game -->
  
-        <div id="RPSusername">USER</div>
-        <div id="RPScpuname">CPU</div>
+        <div id="RPSusername" class="RPSfadeout">USER</div>
+        <div id="RPScpuname" class="RPSfadeout">CPU</div>
 
-        <div id="userRPS">
-        <img id="RPSgifUser" src="assets/imgs/RpsUSERgif.gif">
-        <img src="assets/imgs/userRock.jpeg" id="User_Rock" style="display: none;">
-        <img src="assets/imgs/userScissors.jpeg" id="User_Scissors" style="display: none;">
-        <img src="assets/imgs/userPaper.jpeg" id="User_Paper" style="display: none;">
+        <div id="userRPS" class="RPSfadeout">
+            <img id="RPSgifUser" src="assets/imgs/RpsUSERgif.gif">
+            <img src="assets/imgs/userRock.jpeg" id="User_Rock" style="display: none;">
+            <img src="assets/imgs/userScissors.jpeg" id="User_Scissors" style="display: none;">
+            <img src="assets/imgs/userPaper.jpeg" id="User_Paper" style="display: none;">
         </div>
-        <div id="cpuRPS">
+        <div id="cpuRPS" class="RPSfadeout">
             <img id="RPSgifCPU" src="assets/imgs/RpsCPUgif.gif">
             <img src="assets/imgs/cpuRock.jpeg" id="Opp_Rock" style="display: none;">
             <img src="assets/imgs/cpuScissors.jpeg" id="Opp_Scissors" style="display: none;">
             <img src="assets/imgs/cpuPaper.jpeg" id="Opp_Paper" style="display: none;">
         </div>
-        <div id="RPSend" onclick="ContinueToZha();">Click on Screen to continue</div>
+        <div id="RPSend" onclick="ContinueToZha();" class="RPSfadeout">Click on Screen to continue</div>
     </div>
      <!-- --------------------------------------------------------------------Zha game window ---------------------------------------------------------------------->
      <div id="game-window">
         <!-------------------------------------Zha-page1-------------------------------------->
         <div id="zha-left-half"></div>
-        <div class="zha-split-half-vert">
+        <div class="zha-split-half-vert zha-fadein">
             <button role="button" class="buttons button-design" id="left-left-button" onclick="plusSlidesLeft(-1)"><</button>
             <div class="myslides1 FadeZhaChoices">
                 <img src="assets/imgs/TestImg.png">
@@ -98,7 +99,7 @@
             <div class="zha-split-half-vert-caption">Left Hand</div>
         </div>
         <div id="zha-right-half"></div>
-        <div class="zha-split-half-vert">
+        <div class="zha-split-half-vert zha-fadein">
             <button role="button" class="buttons button-design" id="right-left-button" onclick="plusSlidesRight(-1)"><</button>
             <div class="myslides2 FadeZhaChoices">
                 <img src="assets/imgs/TestImg.png">
@@ -112,7 +113,7 @@
             <button role="button" class="buttons button-design" id="right-right-button" onclick="plusSlidesRight(1)">></button>
             <div class="zha-split-half-vert-caption">Right Hand</div>
         </div>
-        <div class="lock-in-button-container">
+        <div class="lock-in-button-container zha-fadein">
             <button role="button" class="button-design lock-in-button" onclick="zha_results();">Confirm Selection</button>
         </div>
         <!-------------------------------------Zha-page2-------------------------------------->
@@ -166,7 +167,22 @@
             <span id="lives counter">User's Lives Left: </span><span>CPU's Lives Left: </span>
         </div> -->
         <div id="end-results"></div>
+        <div id="zha-togglebox">
+            <div id="zha-toggle-bar" onclick="ZhaToggleSideBar();">
+                <div class="vertical-lines" style="left: 25%; top: 50%; transform: translateY(-50%);"></div>
+                <div class="vertical-lines" style="left: 50%; top: 50%; transform: translateY(-50%);"></div>
+                <div class="vertical-lines" style="left: 75%; top: 50%; transform: translateY(-50%);"></div>
+            </div>
+            <div id="zha-info-stats">
+                <span id="Turn-stats">Turn: </span>
+                <br>
+                <span id="User-lives-stats">User Lives Left: 2</span>
+                <br>
+                <span id="CPU-lives-stats">CPU Lives Left: 2</span>
+            </div>
+        </div>
     </div>
+    <div class="border-top-instructions"></div>
     <div class="instructions" id="instructions">
         <h3>Instructions for Zha: </h3>
         <span>- In Zha we have 2 lives represented by our 2 hands. The game is played in a smiliar fashion to rock-paper-scissors in which we are using rock, human or gun as our moves instead.</span>
@@ -183,8 +199,6 @@
 
         
     </div>
-    <script src="assets/js/jqueryCompressedSlim.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/Events.js"></script>
 
     

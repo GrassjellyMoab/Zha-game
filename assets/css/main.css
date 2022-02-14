@@ -232,6 +232,7 @@ body {
 }
 
 #rock-paper-scissors-window .RPS-results span {
+    user-select: none;
     font-size: 30px;
     position: absolute;
     top: 50%;
@@ -439,8 +440,8 @@ body {
 }
 
 #game-window .zha-split-half-hori .zha-items img {
-    width: 250px;
-    height: 300px;
+    width: 200px;
+    height: 240px;
 }
 
 #game-window .zha-split-half-hori .zha-items .zha-shown-move, .zha-death {
@@ -450,7 +451,7 @@ body {
 #game-window .zha-split-half-hori #CPU_left_hand_zha {
     position: relative;
     left: 100px;
-    top: -80px;
+    top: -110px;
     z-index: 1;
 
 }
@@ -458,7 +459,7 @@ body {
 #game-window .zha-split-half-hori #CPU_right_hand_zha {
     position: relative;
     left: 360px;
-    top: -80px;
+    top: -110px;
     z-index: 1;
 }
 
@@ -466,14 +467,14 @@ body {
 #game-window .zha-split-half-hori #User_left_hand_zha {
     position: relative;
     left: 100px;
-    bottom: -40px;
+    bottom: -70px;
     z-index: 1;
 }
 
 #game-window .zha-split-half-hori #User_right_hand_zha {
     position: relative;
     left: 360px;
-    bottom: -40px;
+    bottom: -70px;
     z-index: 1;
 }
 
@@ -482,7 +483,7 @@ body {
 #game-window .zha-split-half-hori #CPU_left_hand_dead {
     position: relative;
     left: 100px;
-    top: -80px;
+    top: -110px;
     z-index: 1;
     display: none;
 }
@@ -490,7 +491,7 @@ body {
 #game-window .zha-split-half-hori #CPU_right_hand_dead {
     position: relative;
     left: 360px;
-    top: -80px;
+    top: -110px;
     z-index: 1;
     display: none;
 }
@@ -498,7 +499,7 @@ body {
 #game-window .zha-split-half-hori #User_left_hand_dead {
     position: relative;
     left: 100px;
-    bottom: -40px;
+    bottom: -70px;
     z-index: 1;
     display: none;
 }
@@ -506,7 +507,7 @@ body {
 #game-window .zha-split-half-hori #User_right_hand_dead {
     position: relative;
     left: 360px;
-    bottom: -40px;
+    bottom: -70px;
     z-index: 1;
     display: none;
 }
@@ -516,6 +517,7 @@ body {
     position: absolute;
     width: 960px;
     height:610px;
+    z-index: 10;
     display: none;
     user-select: none;
     font-size: 30px;
@@ -565,6 +567,7 @@ body {
     padding-top: 293px;
     color: rgb(56, 150, 56);
     font-weight: bolder;
+    z-index: 11;
 }
 
 #game-window .zha-split-half-hori h1 {
@@ -583,7 +586,7 @@ body {
     /* transform: translate(183%, -210%); */
     height: 200px;
     width: 340px;
-    z-index: 5;
+    z-index: 11;
 }
 #game-window #zha-toggle-bar {
     position: absolute;
@@ -597,6 +600,7 @@ body {
     border: solid 2px rgb(122, 173, 122);
     background-color: rgb(173, 212, 173);
     cursor: pointer;
+    z-index: 11;
 }
 
 .vertical-lines {
@@ -624,6 +628,151 @@ body {
     line-height: 1.6;
     font-size: 20px;
 }
+
+.arrow-vert {
+    width: 150px;
+    visibility: hidden;
+    z-index: 5;
+  }
+  
+.arrow-vert .line {
+    margin-top: 14px;
+    width: 120px;
+    background: rgb(206, 226, 212);
+    height: 10px;
+    float: left;
+  }
+  
+.arrow-vert .point {
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 30px solid rgb(206, 226, 212);
+    float: right;
+}
+
+.arrow-diagonal {
+    width: 400px;
+    visibility: hidden;
+    z-index: 5;
+  }
+.arrow-diagonal .line {
+    margin-top: 14px;
+    width: 370px;
+    background: rgb(206, 226, 212);
+    height: 10px;
+    float: left;
+  }
+  
+.arrow-diagonal .point {
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 30px solid rgb(206, 226, 212);
+    float: right;
+}
+
+#game-window #arrow_CPUL_USERL{
+    position: relative;
+    bottom: 66%;
+    right: 30%;
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+
+}
+
+#game-window #arrow_USERL_CPUR {
+    position: relative;
+    bottom: 85%;
+    left: 30%;
+    transform: rotate(-30deg);
+    -webkit-transform: rotate(-30deg);
+}
+
+#game-window #arrow_CPUR_USERR {
+    position: relative;
+    bottom: 66%;
+    right: -11%;
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+}
+
+#game-window #arrow_USERR_CPUL {
+    position: relative;
+    bottom: 85%;
+    right: 12%;
+    transform: rotate(-150deg);
+    -webkit-transform: rotate(-150deg);
+}
+
+#game-window #arrow_USERL_CPUL {
+    position: relative;
+    bottom: 66%;
+    right: 45%;
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+
+}
+
+#game-window #arrow_CPUL_USERR {
+    position: relative;
+    bottom: 91%;
+    left: 26%;
+    transform: rotate(30deg);
+    -webkit-transform: rotate(30deg);
+}
+
+#game-window #arrow_USERR_CPUR {
+    position: relative;
+    bottom: 66%;
+    right: 4%;
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+}
+
+#game-window #arrow_CPUR_USERL {
+    position: relative;
+    bottom: 91%;
+    right: 13%;
+    transform: rotate(150deg);
+    -webkit-transform: rotate(150deg);
+}
+
+/*----play again btn------*/
+#game-window #Play-again {
+    position: relative;
+    bottom: 83%;
+    right: 40%;
+    display: none;
+    z-index: 11;
+}
+
+#game-window #Play-again #play-again-btn {
+    background-color: #c2fbd7;
+    border-radius: 10px;
+    box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+    color: green;
+    font-weight: bolder;
+    cursor: pointer;
+    display: inline-block;
+    font-family: papyrus;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 20px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  #game-window .play-again-btn-position #play-again-btn:hover {
+    box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+    transform: scale(1.05) rotate(-1deg);
+  }
 /* ----------------------------------------------Instruction Menu---------------------------------------------- */
 .instructions { 
     margin: auto;

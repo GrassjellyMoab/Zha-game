@@ -1,185 +1,181 @@
-// ------------------------------------------------INTRO------------------------------------------------------
-// Let 2nd intro text onwards appear
-window.onload = setTimeout(function() {
-    let obj = document.getElementById('Second');
-    obj.style.visibility = 'visible'
-    setTimeout(()=>{
-      // let play-now button appear after other text appears
-      document.getElementById('play-now-button').style.visibility='visible';
-      document.getElementById('play-now-button').classList.add('fade-in-faster');
-    },1500)
-}, 2500)
+// // ------------------------------------------------INTRO------------------------------------------------------
+// // Let 2nd intro text onwards appear
+// window.onload = setTimeout(function() {
+//     let obj = document.getElementById('Second');
+//     obj.style.visibility = 'visible'
+//     setTimeout(()=>{
+//       // let play-now button appear after other text appears
+//       document.getElementById('play-now-button').style.visibility='visible';
+//       document.getElementById('play-now-button').classList.add('fade-in-faster');
+//     },1500)
+// }, 2500)
 
-function IntroToUsername() {
-  // let intro page fade out
-  let obj = document.getElementById('intro-animate');
-  let obj2 = document.getElementById('username');
-  obj.classList.add('fade-out');
-  obj2.classList.add('fade-in');
-  setTimeout(()=>{
-    obj.style.display= 'none';
-    obj2.style.display = 'block';
-}, 3000)
-}
-// User name Section
-function usernamecheck() {
-    var username = document.getElementById('userinput').value;
-    localStorage.setItem("Username", username);
-    let format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
-    // no special characters
-    if (format.test(username)){
-        document.getElementById('error').style.display = 'block';
-        return;
-    }
-    else {
-        document.getElementById('error').style.display = 'none';
-        // let intro-window fade out and RPS fade-in
-        let obj = document.getElementById('username');
-        obj.classList.remove('fade-in');
-        obj.classList.add('fade-out-faster');
-        setTimeout(() => {
-            document.getElementById('username').style.display = 'none';
-        }, 1000);
+// function IntroToUsername() {
+//   // let intro page fade out
+//   let obj = document.getElementById('intro-animate');
+//   let obj2 = document.getElementById('username');
+//   obj.classList.add('fade-out');
+//   obj2.classList.add('fade-in');
+//   setTimeout(()=>{
+//     obj.style.display= 'none';
+//     obj2.style.display = 'block';
+// }, 3000)
+// }
+// // User name Section
+// function usernamecheck() {
+//     var username = document.getElementById('userinput').value;
+//     localStorage.setItem("Username", username);
+//     let format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+//     // no special characters
+//     if (format.test(username)){
+//         document.getElementById('error').style.display = 'block';
+//         return;
+//     }
+//     else {
+//         document.getElementById('error').style.display = 'none';
+//         // let intro-window fade out and RPS fade-in
+//         let obj = document.getElementById('username');
+//         obj.classList.remove('fade-in');
+//         obj.classList.add('fade-out-faster');
+//         setTimeout(() => {
+//             document.getElementById('username').style.display = 'none';
+//         }, 1000);
 
-        let obj2 = document.getElementById('RPSchoices');
-        obj2.classList.add('fade-in-faster');
-        setTimeout(() => {
-            document.getElementById('rock-paper-scissors-window').style.display = 'block';
-            document.getElementById('intro-window').style.display = 'none';
-        }, 1000);
-    }
-}
-// Enter key to trigger button for input
-var input = document.getElementById('username');
-input.addEventListener("keyup", function(event) {
-  if (event.keyCode === 13) {
-   event.preventDefault();
-   document.getElementById("UsernameBtn").click();
-  }
-});
-
-
+//         let obj2 = document.getElementById('RPSchoices');
+//         obj2.classList.add('fade-in-faster');
+//         setTimeout(() => {
+//             document.getElementById('rock-paper-scissors-window').style.display = 'block';
+//             document.getElementById('intro-window').style.display = 'none';
+//         }, 1000);
+//     }
+// }
+// // Enter key to trigger button for input
+// var input = document.getElementById('username');
+// input.addEventListener("keyup", function(event) {
+//   if (event.keyCode === 13) {
+//    event.preventDefault();
+//    document.getElementById("UsernameBtn").click();
+//   }
+// });
 
 
 
 
-// ------------------------------------------- Rock Paper Scissors Game -----------------------------------------------------//
-// what moves beats what
-var move_dict = {"Rock": "Scissors", "Scissors": "Paper", "Paper": "Rock"};
-// movelist
-var options = ["Rock", "Paper","Scissors"];
-var opp_options = {"Rock": "Opp_Rock", "Scissors": "Opp_Scissors", "Paper": "Opp_Paper"};
-var user_options = {"Rock": "User_Rock", "Scissors": "User_Scissors", "Paper": "User_Paper"};
-var gifUser = "/Users/yanyixue/Desktop/HTML, CSS, JS/Zha-game/assets/imgs/RpsUSERgif.gif";
-var gifCPU = "/Users/yanyixue/Desktop/HTML, CSS, JS/Zha-game/assets/imgs/RpsCPUgif.gif";
-var turn;
-
-// gif animate again when game resets
-function resetGif(id) {
-    var img = document.getElementById(id);
-    var imageUrl = img.src;
-    img.src = "";
-    img.src = imageUrl;
-};
-
-function RPSchoice(RpsChoice) {
-    // start gif for rps
-    document.getElementById('RPSchoices').style.display = 'none';
-
-    document.getElementById('userRPS').style.display = 'block';
-    document.getElementById('cpuRPS').style.display = 'block';
-    resetGif('RPSgifUser');
-    resetGif('RPSgifCPU');
-    document.getElementById('RPSusername').style.display = 'inline-block';
-    document.getElementById('RPSusername').innerHTML = localStorage.getItem("Username");
-    document.getElementById('RPScpuname').style.display = 'inline-block';
-
-    // retrieve user's RPS choice
-    console.log(RpsChoice);
-    // value of opponents move
-    let opp_move = options[Math.floor(Math.random() * 3)];
-    localStorage.setItem("oppRPSmove", opp_move);
-    localStorage.setItem("UserRPSmove", RpsChoice);
-
-    // play RPS move animations
-    setTimeout(() => {
-        document.getElementById('RPSgifCPU').style.display = 'none';
-        document.getElementById('RPSgifUser').style.display = 'none';
-        document.getElementById(opp_options[opp_move]).style.display = 'block';
-        document.getElementById(user_options[RpsChoice]).style.display = 'block';
-    }, 1300);
 
 
-    // User wins
-    setTimeout(() => {
-        document.getElementById('RPS-results').style.display = 'block';
-        console.log(opp_move);
-        console.log(RpsChoice);
-        if (opp_move == move_dict[RpsChoice]) {
-            document.getElementById('RPS-results2').innerHTML = 'User Wins!';
-            turn = true;
-            document.getElementById('RPSend').style.display = 'block';
-        }
-        // User Loses
-        else if (RpsChoice == move_dict[opp_move]) {
-            document.getElementById('RPS-results2').innerHTML = 'CPU Wins!';
-            turn = false;
-            document.getElementById('RPSend').style.display = 'block';
-        }
+// // ------------------------------------------- Rock Paper Scissors Game -----------------------------------------------------//
+// // what moves beats what
+// var move_dict = {"Rock": "Scissors", "Scissors": "Paper", "Paper": "Rock"};
+// // movelist
+// var options = ["Rock", "Paper","Scissors"];
+// var opp_options = {"Rock": "Opp_Rock", "Scissors": "Opp_Scissors", "Paper": "Opp_Paper"};
+// var user_options = {"Rock": "User_Rock", "Scissors": "User_Scissors", "Paper": "User_Paper"};
+// var gifUser = "/Users/yanyixue/Desktop/HTML, CSS, JS/Zha-game/assets/imgs/RpsUSERgif.gif";
+// var gifCPU = "/Users/yanyixue/Desktop/HTML, CSS, JS/Zha-game/assets/imgs/RpsCPUgif.gif";
+// var turn;
 
-        if (RpsChoice == opp_move) {
-            document.getElementById('RPS-results2').innerHTML = 'Its a Draw!';
-            document.getElementById('RPSdraw').style.display = 'block';
-        }
-    }, 1400);
-};
+// // gif animate again when game resets
+// function resetGif(id) {
+//     var img = document.getElementById(id);
+//     var imageUrl = img.src;
+//     img.src = "";
+//     img.src = imageUrl;
+// };
 
-// if draw reset game.
-function drawgame() {
-    document.getElementById('RPSchoices').style.display = 'flex';
-    document.getElementById('userRPS').style.display = 'none';
-    document.getElementById('cpuRPS').style.display = 'none';
-    document.getElementById('RPSusername').style.display = 'none';
-    document.getElementById('RPScpuname').style.display = 'none';
-    document.getElementById('RPS-results').style.display = 'none';
-    document.getElementById('RPSdraw').style.display = 'none';
-    document.getElementById(opp_options[localStorage.getItem("oppRPSmove")]).style.display = 'none';
-    document.getElementById(user_options[localStorage.getItem("UserRPSmove")]).style.display = 'none';
-    document.getElementById('RPSgifUser').style.display = 'block';
-    document.getElementById('RPSgifCPU').style.display = 'block';
-};
+// function RPSchoice(RpsChoice) {
+//     // start gif for rps
+//     document.getElementById('RPSchoices').style.display = 'none';
 
-// if game ends, continue to Zha Game
-function ContinueToZha() {
-  let RPS_Window = document.getElementById('rock-paper-scissors-window');
-  let RPS_innerObjects = document.getElementsByClassName('RPSfadeout');
-  for (let i = 0; i < RPS_innerObjects.length; i++) {
-    RPS_innerObjects[i].classList.add('fade-out');
-    setTimeout(()=>{
-      Array.from(RPS_innerObjects).forEach((el) => {
-        el.style.display = 'none';
-      })
-    },1000)
-  }
+//     document.getElementById('userRPS').style.display = 'block';
+//     document.getElementById('cpuRPS').style.display = 'block';
+//     resetGif('RPSgifUser');
+//     resetGif('RPSgifCPU');
+//     document.getElementById('RPSusername').style.display = 'inline-block';
+//     document.getElementById('RPSusername').innerHTML = localStorage.getItem("Username");
+//     document.getElementById('RPScpuname').style.display = 'inline-block';
+
+//     // retrieve user's RPS choice
+//     console.log(RpsChoice);
+//     // value of opponents move
+//     let opp_move = options[Math.floor(Math.random() * 3)];
+//     localStorage.setItem("oppRPSmove", opp_move);
+//     localStorage.setItem("UserRPSmove", RpsChoice);
+
+//     // play RPS move animations
+//     setTimeout(() => {
+//         document.getElementById('RPSgifCPU').style.display = 'none';
+//         document.getElementById('RPSgifUser').style.display = 'none';
+//         document.getElementById(opp_options[opp_move]).style.display = 'block';
+//         document.getElementById(user_options[RpsChoice]).style.display = 'block';
+//     }, 1300);
+
+
+//     // User wins
+//     setTimeout(() => {
+//         document.getElementById('RPS-results').style.display = 'block';
+//         console.log(opp_move);
+//         console.log(RpsChoice);
+//         if (opp_move == move_dict[RpsChoice]) {
+//             document.getElementById('RPS-results2').innerHTML = 'User Wins!';
+//             turn = true;
+//             document.getElementById('RPSend').style.display = 'block';
+//         }
+//         // User Loses
+//         else if (RpsChoice == move_dict[opp_move]) {
+//             document.getElementById('RPS-results2').innerHTML = 'CPU Wins!';
+//             turn = false;
+//             document.getElementById('RPSend').style.display = 'block';
+//         }
+
+//         if (RpsChoice == opp_move) {
+//             document.getElementById('RPS-results2').innerHTML = 'Its a Draw!';
+//             document.getElementById('RPSdraw').style.display = 'block';
+//         }
+//     }, 1400);
+// };
+
+// // if draw reset game.
+// function drawgame() {
+//     document.getElementById('RPSchoices').style.display = 'flex';
+//     document.getElementById('userRPS').style.display = 'none';
+//     document.getElementById('cpuRPS').style.display = 'none';
+//     document.getElementById('RPSusername').style.display = 'none';
+//     document.getElementById('RPScpuname').style.display = 'none';
+//     document.getElementById('RPS-results').style.display = 'none';
+//     document.getElementById('RPSdraw').style.display = 'none';
+//     document.getElementById(opp_options[localStorage.getItem("oppRPSmove")]).style.display = 'none';
+//     document.getElementById(user_options[localStorage.getItem("UserRPSmove")]).style.display = 'none';
+//     document.getElementById('RPSgifUser').style.display = 'block';
+//     document.getElementById('RPSgifCPU').style.display = 'block';
+// };
+
+// // if game ends, continue to Zha Game
+// function ContinueToZha() {
+//   let RPS_Window = document.getElementById('rock-paper-scissors-window');
+//   let RPS_innerObjects = document.getElementsByClassName('RPSfadeout');
+//   for (let i = 0; i < RPS_innerObjects.length; i++) {
+//     RPS_innerObjects[i].classList.add('fade-out');
+//   }
   
-  setTimeout(()=>{
-    RPS_Window.style.display = 'none';
-  }, 3000)
-  setTimeout(()=>{
-    document.getElementById('game-window').style.display = 'flex';
-    let ZhaFadeInAtStart = document.getElementsByClassName('zha-fadein');
-    for (let i = 0; i < ZhaFadeInAtStart.length; i++) {
-      ZhaFadeInAtStart[i].classList.add('fade-in');
-    } 
-  }, 3000)
-  // display whose turn
-  if (turn == true) {
-    document.getElementById('Turn-stats').innerHTML = 'Turn: User';
-  }
-  else if (turn == false) {
-    document.getElementById('Turn-stats').innerHTML = 'Turn: CPU';
-  }
-}
+//   setTimeout(()=>{
+//     RPS_Window.style.display = 'none';
+//   }, 3000)
+//   setTimeout(()=>{
+//     document.getElementById('game-window').style.display = 'flex';
+//     let ZhaFadeInAtStart = document.getElementsByClassName('zha-fadein');
+//     for (let i = 0; i < ZhaFadeInAtStart.length; i++) {
+//       ZhaFadeInAtStart[i].classList.add('fade-in');
+//     } 
+//   }, 3000)
+//   // display whose turn
+//   if (turn == true) {
+//     document.getElementById('Turn-stats').innerHTML = 'Turn: User';
+//   }
+//   else if (turn == false) {
+//     document.getElementById('Turn-stats').innerHTML = 'Turn: CPU';
+//   }
+// }
+var turn = false;
 
 /* -----------------------------Zha Game----------------------------- */
 // var to check whether we on page 1 or 2
@@ -441,8 +437,8 @@ function zha_results() {
     else {
       defender[0] = USER_hands.LeftMove;
       defender[1] = USER_hands.RightMove;
-      attacker[0] = CPU_hands.LeftMove;
-      attacker[1] = CPU_hands.RightMove;
+      attacker[0] = "Gun";
+      attacker[1] = "Gun";
       console.log("initially2 attacker:" + attacker);
       console.log("initially2 defender:" + defender);
       // attacker left hand attacks defender left if not right
@@ -481,7 +477,6 @@ function zha_results() {
       }
     }
   },2000);
-
   // check if dead
   setTimeout(() => {
     if (CPU_hands.LeftStatus == false) {
@@ -507,7 +502,6 @@ function zha_results() {
     console.log("attacker:" + attacker);
     console.log("defender:" + defender);
   }, 6000)
-  
   setTimeout(() => {
     // Continue
     if ((USER_hands.RightStatus == true || USER_hands.LeftStatus == true) && (CPU_hands.LeftStatus == true || CPU_hands.RightStatus == true)) {
@@ -529,6 +523,7 @@ function zha_results() {
         block.innerHTML = "Your Have Lost, Try Again Next Time."
         document.getElementById('User-lives-stats').innerHTML = 'User Lives Left: 0';
         document.getElementById('Play-again').style.display = "block";
+
       }
       // victory
       if (CPU_hands.LeftStatus == false && CPU_hands.RightStatus == false) {
@@ -559,7 +554,6 @@ function continue_zha() {
     document.getElementById('Turn-stats').innerHTML = 'Turn: CPU';
   }
   //
-
   zha_page_num = 1;
   if (sidebarcount % 2 != 0) {
     document.getElementById('zha-togglebox').style.transform = 'translate(222%, -210%)';
@@ -571,29 +565,23 @@ function continue_zha() {
   Array.from(document.getElementsByClassName('zha-split-half-vert')).forEach((el) => {
     el.style.display = 'flex';
   });
-
   Array.from(document.getElementsByClassName('lock-in-button-container')).forEach((el) => {
     el.style.display = 'block';
   });
-
   // Show 2nd part with hands
   Array.from(document.getElementsByClassName('zha-split-half-hori')).forEach((el) => {
     el.style.display = 'none';
   });
-
-  // remove arrows
   Array.from(document.getElementsByClassName('arrow-vert')).forEach((el) => {
     el.style.visibility = 'hidden';
   })
-
   Array.from(document.getElementsByClassName('arrow-diagonal')).forEach((el) => {
     el.style.visibility = 'hidden';
   })
-  
+  // get rid of all the arrows 
   // display block for dead hands on 1st page
   document.getElementById('zha-left-half').style.display = 'block';
   document.getElementById('zha-right-half').style.display = 'block';
-
   // Get arr of 'zha-split-half-vert' to display none when hand is dead
   let vert_arr = document.getElementsByClassName('zha-split-half-vert');
   // check if right or left hand is dead
@@ -609,7 +597,6 @@ function continue_zha() {
     // add to the counter so that we know whether 'if block' has been ran before
     page1_death_hands[0] += 1;
   }
-
   if (USER_hands.RightStatus == false && page1_death_hands[1] == 0) {
     let img = document.createElement('img');
     img.src = "assets/css/css_images/temp-dead-hand-right.jpg";
@@ -621,36 +608,32 @@ function continue_zha() {
     // add to the counter so that we know whether 'if block' has been ran 
     page1_death_hands[1] += 1;
   }
-
   slideIndexLeft = 1;
   slideIndexRight = 1;
 }
 
 
-// Play Again Function
 function PlayAgain() {
-  window.location.reload();
-  // console.log("IM IN!");
-  // document.getElementById('game-window').style.display = 'none';
-  // let obj2 = document.getElementById('RPSchoices');
-  // obj2.classList.add('fade-in-faster');
-  // document.getElementById('rock-paper-scissors-window').style.display = 'block';
-  // document.getElementById('RPSchoices').style.display = 'flex';
+  document.getElementById('game-window').style.display = 'none';
+  let obj2 = document.getElementById('RPSchoices');
+  obj2.classList.add('fade-in-faster');
+  document.getElementById('rock-paper-scissors-window').style.display = 'block';
+  
 
-  // // reset all zha variables
-  // zha_page_num = 1;
-  // sidebarcount = 1;
-  // slideIndexLeft = 1;
-  // slideIndexRight = 1;
-  // page1_death_hands = [0, 0];
+  // reset all zha variables
+  zha_page_num = 1;
+  sidebarcount = 1;
+  slideIndexLeft = 1;
+  slideIndexRight = 1;
+  page1_death_hands = [0, 0];
  
-  // CPU_hands.LeftMove = null;
-  // CPU_hands.LeftStatus = true;
-  // CPU_hands.RightMove = null;
-  // CPU_hands.RightStatus = true;
+  CPU_hands.LeftMove = null;
+  CPU_hands.LeftStatus = true;
+  CPU_hands.RightMove = null;
+  CPU_hands.RightStatus = true;
 
-  // USER_hands.LeftMove = null;
-  // USER_hands.LeftStatus = true;
-  // USER_hands.RightMove = null;
-  // USER_hands.RightStatus = true;
+  USER_hands.LeftMove = null;
+  USER_hands.LeftStatus = true;
+  USER_hands.RightMove = null;
+  USER_hands.RightStatus = true;
 }

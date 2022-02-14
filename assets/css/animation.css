@@ -271,3 +271,24 @@
     from {opacity: .4} 
     to {opacity: 1}
   }
+
+  /* Zha Game Arrow animations */
+
+  /* .arrow-vert-animate-1 {
+    -webkit-animation-name: arrow-vert-1;
+    -webkit-animation-duration: 2s;
+    animation-name: arrow-vert-1;
+    animation-duration: 2s;
+
+  }
+
+  @keyframes arrow-vert-1 {
+    0% {
+          opacity: 0;
+          transform: translateY(-180%)
+        }
+    50% {
+            opacity: 0;
+        }   
+    100% {opacity: 1;}
+  } */

@@ -600,7 +600,9 @@ function continue_zha() {
   if (USER_hands.LeftStatus == false && page1_death_hands[0] == 0) {
     // create dead hand image
     let img = document.createElement('img');
-    img.src = "assets/css/css_images/temp-dead-hand-left.jpg";
+    img.src = "assets/css/css_images/DeadZhaHand.JPG";
+    img.classList.add('deadhand-sizing');
+    img.classList.add('fade-in');
     let block = document.getElementById("zha-left-half");
     block.style.display = 'block';
     block.appendChild(img);
@@ -612,7 +614,9 @@ function continue_zha() {
 
   if (USER_hands.RightStatus == false && page1_death_hands[1] == 0) {
     let img = document.createElement('img');
-    img.src = "assets/css/css_images/temp-dead-hand-right.jpg";
+    img.src = "assets/css/css_images/DeadZhaHand.JPG";
+    img.classList.add('deadhand-sizing');
+    img.classList.add('fade-in');
     let block = document.getElementById("zha-right-half");
     block.style.display = 'block';
     block.appendChild(img);

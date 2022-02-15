@@ -3,6 +3,7 @@ A classic singaporean childhood game
 - To play the terminal python version of Zha, enter the Simple_Python_Zha Folder and open Zha.py
 - To play the web game Zha, open index.html
 - App is up on github pages too***
+- App is not responsive yet and will not fit to mobile devices but still playable
 
 //
 - Python Terminal Version is completed

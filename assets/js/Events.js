@@ -94,8 +94,6 @@ function RPSchoice(RpsChoice) {
     document.getElementById('RPSusername').innerHTML = localStorage.getItem("Username");
     document.getElementById('RPScpuname').style.display = 'inline-block';
 
-    // retrieve user's RPS choice
-    console.log(RpsChoice);
     // value of opponents move
     let opp_move = options[Math.floor(Math.random() * 3)];
     localStorage.setItem("oppRPSmove", opp_move);
@@ -113,8 +111,7 @@ function RPSchoice(RpsChoice) {
     // User wins
     setTimeout(() => {
         document.getElementById('RPS-results').style.display = 'block';
-        console.log(opp_move);
-        console.log(RpsChoice);
+      
         if (opp_move == move_dict[RpsChoice]) {
             document.getElementById('RPS-results2').innerHTML = 'User Wins!';
             turn = true;
@@ -302,7 +299,6 @@ function zha_results() {
   else if (sidebarcount % 2 == 0) {
     document.getElementById('zha-togglebox').style.transform = 'translate(183%, -210%)';
   }
-  console.log("turn:" + turn);
   // Display None Choice Part
   Array.from(document.getElementsByClassName('zha-split-half-vert')).forEach((el) => {
     el.style.display = 'none';
@@ -328,10 +324,6 @@ function zha_results() {
   // document.getElementById('zha-turn-end-continue').style.display = "block";
 
   // get CPU moves
-  console.log("CPU LEFT STATUS: "+ CPU_hands.LeftStatus);
-  console.log("CPU RIGHT STATUS: "+CPU_hands.RightStatus);
-  console.log("USER LEFT STATUS: " + USER_hands.LeftStatus);
-  console.log("USER RIGHT STATUS: " + USER_hands.RightStatus);
   if (CPU_hands.LeftStatus == true) {
     CPU_hands.LeftMove = zha_moves[Math.floor(Math.random()*3)];
   }
@@ -390,16 +382,12 @@ function zha_results() {
     }
   },2000)
   // If User's Turn
-  console.log("User's moves:\n left: " + USER_hands.LeftMove + "\nright: " +USER_hands.RightMove);
-  console.log("CPU's moves:\n left: " + CPU_hands.LeftMove + "\nright: " +CPU_hands.RightMove);
   setTimeout(() => {
     if (turn) {
       attacker[0] = USER_hands.LeftMove;
       attacker[1] = USER_hands.RightMove;
       defender[0] = CPU_hands.LeftMove;
       defender[1] = CPU_hands.RightMove;
-      console.log("initially attacker:" + attacker);
-      console.log("initially defender:" + defender);
 
       // attacker left hand attacks defender left if not right
       if (zha_moves_dict[attacker[0]] == defender[0]) {
@@ -443,8 +431,6 @@ function zha_results() {
       defender[1] = USER_hands.RightMove;
       attacker[0] = CPU_hands.LeftMove;
       attacker[1] = CPU_hands.RightMove;
-      console.log("initially2 attacker:" + attacker);
-      console.log("initially2 defender:" + defender);
       // attacker left hand attacks defender left if not right
       if (zha_moves_dict[attacker[0]] == defender[0]) {
         USER_hands.LeftStatus = false;
@@ -504,8 +490,6 @@ function zha_results() {
       document.getElementById('User_right_hand_dead').style.display = 'block';
       document.getElementById(UserZhaRightIDs["Dead"]).style.display = 'block';
     }
-    console.log("attacker:" + attacker);
-    console.log("defender:" + defender);
   }, 6000)
   
   setTimeout(() => {
@@ -634,27 +618,4 @@ function continue_zha() {
 // Play Again Function
 function PlayAgain() {
   window.location.reload();
-  // console.log("IM IN!");
-  // document.getElementById('game-window').style.display = 'none';
-  // let obj2 = document.getElementById('RPSchoices');
-  // obj2.classList.add('fade-in-faster');
-  // document.getElementById('rock-paper-scissors-window').style.display = 'block';
-  // document.getElementById('RPSchoices').style.display = 'flex';
-
-  // // reset all zha variables
-  // zha_page_num = 1;
-  // sidebarcount = 1;
-  // slideIndexLeft = 1;
-  // slideIndexRight = 1;
-  // page1_death_hands = [0, 0];
- 
-  // CPU_hands.LeftMove = null;
-  // CPU_hands.LeftStatus = true;
-  // CPU_hands.RightMove = null;
-  // CPU_hands.RightStatus = true;
-
-  // USER_hands.LeftMove = null;
-  // USER_hands.LeftStatus = true;
-  // USER_hands.RightMove = null;
-  // USER_hands.RightStatus = true;
 }

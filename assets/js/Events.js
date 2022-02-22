@@ -531,7 +531,7 @@ function zha_results() {
     }
   }, 7000)
 }
-// check whether dead hand in zha page 1 has already been appeneded so we dont append twice
+// check whether dead hand in zha page 1 has already been appended so we dont append twice
 // USER LEFT, USER RIGHT
 var page1_death_hands = [0, 0];
 function continue_zha() {
